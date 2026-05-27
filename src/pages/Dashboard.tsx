@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 
 export function DashboardPage() {
   const [trackingOrderId, setTrackingOrderId] = useState<string | null>(null);
+  const [isVesselHovered, setIsVesselHovered] = useState(false);
 
   return (
     <div className="flex-grow pt-32 pb-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full burlap-texture">
@@ -260,14 +261,42 @@ export function DashboardPage() {
                   <text x="20" y="26.5" fontSize="3" className="fill-primary opacity-70 font-bold select-none" textAnchor="middle">Rotterdam</text>
 
                   {/* Current Vessel Position */}
-                  <g transform="translate(45,60)">
+                  <g 
+                    transform="translate(45,60)"
+                    onMouseEnter={() => setIsVesselHovered(true)}
+                    onMouseLeave={() => setIsVesselHovered(false)}
+                    className="cursor-pointer transition-opacity hover:opacity-80"
+                  >
                     <circle cx="0" cy="0" r="6" className="fill-secondary opacity-30">
                       <animate attributeName="r" values="4;10;4" dur="2s" repeatCount="indefinite" />
                       <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
                     </circle>
                     <circle cx="0" cy="0" r="2.5" className="fill-secondary drop-shadow-md" />
+                    {/* Invisible larger hit area for easier a hovering */}
+                    <circle cx="0" cy="0" r="10" className="fill-transparent" />
                   </g>
                 </svg>
+
+                {/* Vessel Interactive Tooltip */}
+                {isVesselHovered && (
+                  <div 
+                    className="absolute z-20 bg-primary/95 backdrop-blur shadow-xl border border-primary-fixed rounded-lg p-3 text-on-primary font-mono text-xs pointer-events-none animate-in fade-in zoom-in-95 duration-200"
+                    style={{ left: '45%', top: '60%', transform: 'translate(-50%, -120%)' }}
+                  >
+                    <div className="font-bold text-secondary-fixed mb-1.5 border-b border-primary-container pb-1 text-sm tracking-wider">
+                      MV Global Star
+                    </div>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                      <div className="text-secondary-fixed/70">LAT:</div>
+                      <div>02°14.5' N</div>
+                      <div className="text-secondary-fixed/70">LON:</div>
+                      <div>078°42.1' E</div>
+                      <div className="text-secondary-fixed/70">SPD:</div>
+                      <div>18.5 kts</div>
+                    </div>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-primary/95"></div>
+                  </div>
+                )}
 
                 {/* Telemetry Overlay */}
                 <div className="absolute bottom-4 left-4 right-4 md:right-auto bg-surface/90 backdrop-blur text-xs font-mono p-3 rounded-lg shadow-md border border-outline-variant text-on-surface">
