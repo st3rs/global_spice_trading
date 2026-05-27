@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Download, ArrowRight, Headset, Mail, Phone, Calendar, ReceiptText, BadgeCheck, ShoppingCart, X, PackageCheck, Truck, Ship, MapPin } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export function DashboardPage() {
   const [trackingOrderId, setTrackingOrderId] = useState<string | null>(null);
@@ -39,8 +40,22 @@ export function DashboardPage() {
                   <th className="pb-4 pl-4 font-normal text-right"></th>
                 </tr>
               </thead>
-              <tbody className="font-body-md text-body-md">
-                <tr className="border-b border-surface-variant/50 bg-transparent hover:bg-surface-container-lowest relative z-0 hover:z-10 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(1,45,29,0.05)] hover:-translate-y-0.5 cursor-pointer">
+              <motion.tbody 
+                className="font-body-md text-body-md"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { 
+                    opacity: 1, 
+                    transition: { staggerChildren: 0.15 } 
+                  }
+                }}
+              >
+                <motion.tr 
+                  variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+                  className="border-b border-surface-variant/50 bg-transparent hover:bg-surface-container-lowest relative z-0 hover:z-10 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(1,45,29,0.05)] hover:-translate-y-0.5 cursor-pointer"
+                >
                   <td className="py-4 pr-4 font-semibold text-primary">#ORD-992-EU</td>
                   <td className="py-4 pr-4 text-on-surface-variant">Oct 12, 2024</td>
                   <td className="py-4 pr-4">5,000 kg</td>
@@ -59,8 +74,11 @@ export function DashboardPage() {
                       Track Shipment
                     </button>
                   </td>
-                </tr>
-                <tr className="border-b border-surface-variant/50 bg-transparent hover:bg-surface-container-lowest relative z-0 hover:z-10 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(1,45,29,0.05)] hover:-translate-y-0.5 cursor-pointer">
+                </motion.tr>
+                <motion.tr 
+                  variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+                  className="border-b border-surface-variant/50 bg-transparent hover:bg-surface-container-lowest relative z-0 hover:z-10 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(1,45,29,0.05)] hover:-translate-y-0.5 cursor-pointer"
+                >
                   <td className="py-4 pr-4 font-semibold text-primary">#ORD-845-EU</td>
                   <td className="py-4 pr-4 text-on-surface-variant">Sep 28, 2024</td>
                   <td className="py-4 pr-4">2,500 kg</td>
@@ -71,8 +89,11 @@ export function DashboardPage() {
                   </td>
                   <td className="py-4 text-right font-medium">$18,200.00</td>
                   <td className="py-4 pl-4 text-right"></td>
-                </tr>
-                <tr className="border-b border-surface-variant/50 bg-transparent hover:bg-surface-container-lowest relative z-0 hover:z-10 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(1,45,29,0.05)] hover:-translate-y-0.5 cursor-pointer">
+                </motion.tr>
+                <motion.tr 
+                  variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+                  className="border-b border-surface-variant/50 bg-transparent hover:bg-surface-container-lowest relative z-0 hover:z-10 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(1,45,29,0.05)] hover:-translate-y-0.5 cursor-pointer"
+                >
                   <td className="py-4 pr-4 font-semibold text-primary">#ORD-711-EU</td>
                   <td className="py-4 pr-4 text-on-surface-variant">Aug 05, 2024</td>
                   <td className="py-4 pr-4">10,000 kg</td>
@@ -83,8 +104,8 @@ export function DashboardPage() {
                   </td>
                   <td className="py-4 text-right font-medium">$85,000.00</td>
                   <td className="py-4 pl-4 text-right"></td>
-                </tr>
-              </tbody>
+                </motion.tr>
+              </motion.tbody>
             </table>
           </div>
         </section>
