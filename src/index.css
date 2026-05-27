@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #f8f9fa;
+  --color-surface-dim: #d9dadb;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #414844;
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f2;
+  --color-outline: #717973;
+  --color-outline-variant: #c1c8c2;
+  --color-surface-tint: #3f6653;
+  --color-primary: #012d1d;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #1b4332;
+  --color-on-primary-container: #86af99;
+  --color-inverse-primary: #a5d0b9;
+  --color-secondary: #735c00;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fed65b;
+  --color-on-secondary-container: #745c00;
+  --color-tertiary: #002d17;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #004626;
+  --color-on-tertiary-container: #66b784;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #c1ecd4;
+  --color-primary-fixed-dim: #a5d0b9;
+  --color-on-primary-fixed: #002114;
+  --color-on-primary-fixed-variant: #274e3d;
+  --color-secondary-fixed: #ffe088;
+  --color-secondary-fixed-dim: #e9c349;
+  --color-on-secondary-fixed: #241a00;
+  --color-on-secondary-fixed-variant: #574500;
+  --color-tertiary-fixed: #a1f5bc;
+  --color-tertiary-fixed-dim: #85d8a2;
+  --color-on-tertiary-fixed: #00210f;
+  --color-on-tertiary-fixed-variant: #00522d;
+  --color-background: #f8f9fa;
+  --color-on-background: #191c1d;
+  --color-surface-variant: #e1e3e4;
+
+  --spacing-base: 8px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 64px;
+  --spacing-container-max: 1280px;
+
+  --font-headline-lg: "EB Garamond", serif;
+  --font-body-md: "Hanken Grotesk", sans-serif;
+  --font-body-lg: "Hanken Grotesk", sans-serif;
+  --font-headline-md: "EB Garamond", serif;
+  --font-label-md: "Hanken Grotesk", sans-serif;
+  --font-display-lg: "EB Garamond", serif;
+}
+
+@layer utilities {
+  .text-display-lg { font-size: 48px; line-height: 56px; letter-spacing: -0.02em; font-weight: 600; font-family: var(--font-display-lg); }
+  .text-headline-lg { font-size: 32px; line-height: 40px; font-weight: 600; font-family: var(--font-headline-lg); }
+  .text-headline-md { font-size: 24px; line-height: 32px; font-weight: 500; font-family: var(--font-headline-md); }
+  .text-body-lg { font-size: 18px; line-height: 28px; font-weight: 400; font-family: var(--font-body-lg); }
+  .text-body-md { font-size: 16px; line-height: 24px; font-weight: 400; font-family: var(--font-body-md); }
+  .text-label-md { font-size: 14px; line-height: 20px; letter-spacing: 0.05em; font-weight: 600; font-family: var(--font-label-md); }
+  
+  .font-headline-lg { font-family: var(--font-headline-lg); }
+  .font-body-md { font-family: var(--font-body-md); }
+  .font-body-lg { font-family: var(--font-body-lg); }
+  .font-headline-md { font-family: var(--font-headline-md); }
+  .font-label-md { font-family: var(--font-label-md); }
+  .font-display-lg { font-family: var(--font-display-lg); }
+
+  .texture-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .burlap-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' fill='%23012d1d' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .wood-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='wood'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01 0.1' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.05 0' in='noise'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23wood)'/%3E%3C/svg%3E");
+  }
+  
+  .plinth {
+    background-color: var(--color-surface-container-lowest);
+    border: 1px solid var(--color-surface-variant);
+  }
+
+  .soft-lift:hover {
+    box-shadow: 0px 4px 20px rgba(1, 45, 29, 0.05); /* Primary color at 5% */
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+}
+
+html, body {
+  @apply bg-background text-on-surface font-body-md antialiased;
+}
